@@ -17,6 +17,7 @@
 "	Now you can press "za" within any Section to shrink/expand multiple lines
 "
 " Sections:
+"   -> Vundle
 "   -> General
 "   -> User Interface
 "   -> Colors & Fonts
@@ -29,17 +30,58 @@
 " 
 """""""""""""""""""""""""""""""""""""""""""""""}}}
 "
+" VUNDLE
+"
+"""""""""""""""""""""""""""""""""""""""""""""""{{{
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" plugin for YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+
+" plugin nerdtree
+Plugin 'scrooloose/nerdtree'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"""""""""""""""""""""""""""""""""""""""""""""""}}}
+"
 " GENERAL
 "
 """""""""""""""""""""""""""""""""""""""""""""""{{{
-" install pathogen package manager
-execute pathogen#infect()
-
 " sets number of lines for vim to remember
 set history=200
 
 " Enable auto-indenting based on filetype
 filetype indent on
+
+" disable automatic comment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" ctags support
+set tags=tags
 
 """""""""""""""""""""""""""""""""""""""""""""""}}}
 "
@@ -163,13 +205,13 @@ map <F5> :!cscope -Rbq<CR>:cs reset<CR><CR>
 "
 """""""""""""""""""""""""""""""""""""""""""""""{{{
 "h - turns word into html tags
-let @h="yiWi<pa></Ea>Bf<"
+let @h="yiWi<pa></Ea>Bf<"
 
 "c - compute arithmetic and paste after equals sign
-let @c="yt=f=a =0"
+let @c="yt=f=a =0"
 
 "q - surround word in quotes
-let @q="viwa\"hbi\"lel"
+let @q="viwa\"hbi\"lel"
 " Ignores capital-typos when you want to write/quit
 " Not many people about this but you'll definitely thank me
 " Inspired by: http://alexander-hill.tumblr.com/post/78142366738/how-to-fix-the-capital-w-annoyance-in-vim
