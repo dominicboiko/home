@@ -47,6 +47,7 @@ Plugin 'VundleVim/Vundle.vim'
 " End Vundle load
 
 " Begin Plugins load
+Plugin 'itchyny/lightline.vim'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'taylor/vim-zoomwin'
 Plugin 'scrooloose/nerdtree'
@@ -54,6 +55,8 @@ Plugin 'romgrk/winteract.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'Conque-GDB'
 "End Plugins load
 
 " All of your Plugins must be added before the following line
@@ -174,7 +177,10 @@ set laststatus=2
 "     endif
 "     return ''
 " endfunction
-
+" change lighline colorscheme
+let g:lightline = {
+  \ 'colorscheme': 'seoul256',
+  \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""}}}
 
@@ -186,6 +192,24 @@ set laststatus=2
 " map <C-k> <C-W>k
 " map <C-h> <C-W>h
 " map <C-l> <C-W>l
+" Update vim tab hotkeys
+"nnoremap th  :tabfirst<CR>
+"nnoremap tk  :tabnext<CR>
+"nnoremap tj  :tabprev<CR>
+"nnoremap tl  :tablast<CR>
+"nnoremap tt  :tabedit<Space>
+"nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap tx  :tabclose<CR>
+nnoremap to  :tabonly<CR>
+" Alternatively use
+nnoremap tf :tabfirst<CR>
+nnoremap te :tablast<CR>
+nnoremap tl :tabnext<CR>
+nnoremap th :tabprev<CR>
+nnoremap tn :tabnew<CR>
+nnoremap tt :tabs<CR>
+
 map <C-n> :NERDTreeToggle<CR>
 
 " InteractiveWindow plugin mappings
@@ -205,6 +229,10 @@ map <F12> :!cscope -Rbq<CR>:cs reset<CR><CR>
 " jump to the next function
 "nnoremap <silent> ]f :call
 "      \ search('\(\(if\\|for\\|while\\|switch\\|catch\)\_s*\)\@64<!(\_[^)]*)\_[^;{}()]*\zs{', "w")<CR>
+
+" Map fuzzy finder to ctrl-p
+"map <C-p> :Files<CR>
+nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""}}}
 "
 " HELPFUL MACROS
@@ -227,7 +255,13 @@ let @q="viwa\"hbi\"lel"
 :command! Q q
 
 " YouCompleteMe
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+"let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+"let g:ycm_use_clangd = 0
 
 " Ctrlp
 let g:ctrlp_max_files = 500000
+
+" Conque-GDB
+let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
+let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
+let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly
