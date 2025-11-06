@@ -1,0 +1,10 @@
+neww -k -n dev -t 0
+split-window -v -p 40
+neww -n stats
+send-keys 'htop' C-m
+split-window -v -p 40
+split-window -h
+send-keys '$HOME/bin/cpuspeed' C-m
+selectp -t 1
+selectw -t 0
+selectp -t 0
