@@ -52,6 +52,11 @@ end)
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
+-- General Lua keymap hotkeys
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
+vim.keymap.set("n", "<leader>x", ":.lua<CR>")
+vim.keymap.set("v", "<leader>x", ":lua<CR>")
+
 --[[
 """""""""""""""""""""""""""""""""""""""""""""""}}}
 "
