@@ -1,7 +1,6 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 print ("Lazy path installed in " .. lazypath)
---[[ enable this if repo is available
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
@@ -15,7 +14,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     os.exit(1)
   end
 end
---]]
 vim.opt.rtp:prepend(lazypath)
 
 -- Make sure to setup `mapleader` and `maplocalleader` before
@@ -53,8 +51,11 @@ end)
 vim.opt.cursorline = true
 
 -- General Lua keymap hotkeys
+-- Source the entire current file
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
+-- Execute Lua on the line where cursor is located
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
+-- Execute Lua on the highlighted text
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
 
 --[[
@@ -72,8 +73,8 @@ vim.opt.expandtab = true
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- { "folke/tokyonight.nvim", config = function() vim.cmd.colorscheme "tokyonight" end },
-    { dir = "~/.config/nvim/lua/plugins/tokyonight.nvim", config = function() vim.cmd.colorscheme "tokyonight" end },
+    { "folke/tokyonight.nvim", config = function() vim.cmd.colorscheme "tokyonight" end },
+    -- { dir = "~/.config/nvim/lua/plugins/tokyonight.nvim", config = function() vim.cmd.colorscheme "tokyonight" end },
     --{ dir = "~/.config/nvim/lua/plugins/seoul256.nvim", config = function() vim.cmd.colorscheme "seoul256" end },
     -- import your plugins
     { import = "plugins" },
