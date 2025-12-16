@@ -2,9 +2,40 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     -- dir = "~/.config/nvim/lua/plugins/nvim-treesitter",
+    build = ':TSUpdate',
+    --[[
     config = function()
+      require'nvim-treesitter'.install { 'c', 'cpp', 'lua', 'python' }
+    --]]
+    opts = {
+      -- custom handling of parsers
+      ensure_installed = {
+        "c",
+        "cpp",
+        "lua",
+        "python",
+      },
+    },
+    config = function(_, opts)
+      -- install parsers from custom opts.ensure_installed
+      if opts.ensure_installed and #opts.ensure_installed > 0 then
+        require("nvim-treesitter").install(opts.ensure_installed)
+        -- register and start parsers for filetypes
+        for _, parser in ipairs(opts.ensure_installed) do
+          local filetypes = parser -- In this case, parser is the filetype/language name
+          vim.treesitter.language.register(parser, filetypes)
+   
+          vim.api.nvim_create_autocmd({ "FileType" }, {
+            pattern = filetypes,
+            callback = function(event)
+              vim.treesitter.start(event.buf, parser)
+            end,
+          })
+        end
+      end
+      --[[ Remove block comment to install from local paths
       require('nvim-treesitter.configs').setup {
-        --ensure_installed = { "c", "cpp", "lua", "python" }, -- Add languages you need
+        ensure_installed = { "c", "cpp", "lua", "python" }, -- Add languages you need
         highlight = {
           enable = true,
         },
@@ -42,7 +73,7 @@ return {
         },
         filetype = "py",
       }
+    --]]
     end,
-    build = ':TSUpdate',
   },
 }
