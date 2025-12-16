@@ -1,7 +1,7 @@
 return {
   {
-    -- "nvim-treesitter/nvim-treesitter",
-    dir = "~/.config/nvim/lua/plugins/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter",
+    -- dir = "~/.config/nvim/lua/plugins/nvim-treesitter",
     config = function()
       require('nvim-treesitter.configs').setup {
         --ensure_installed = { "c", "cpp", "lua", "python" }, -- Add languages you need

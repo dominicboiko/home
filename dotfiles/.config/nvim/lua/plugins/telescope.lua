@@ -1,24 +1,24 @@
 return {
   {
-    -- 'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
     -- or                              , branch = '0.1.x',
-    dir = "~/.config/nvim/lua/plugins/telescope.nvim",
+    -- dir = "~/.config/nvim/lua/plugins/telescope.nvim",
     event = 'VimEnter',
     dependencies = {
-      -- 'nvim-lua/plenary.nvim',
-      { dir = "~/.config/nvim/lua/plugins/plenary.nvim" },
+      'nvim-lua/plenary.nvim',
+      -- { dir = "~/.config/nvim/lua/plugins/plenary.nvim" },
       {
-        -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
-        dir = "~/.config/nvim/lua/plugins/telescope-fzf-native.nvim",
-        build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+        -- { dir = "~/.config/nvim/lua/plugins/telescope-fzf-native.nvim",
+        --   build = 'make',
+        --   cond = function()
+        --     return vim.fn.executable 'make' == 1
+        --   end, }
       },
-      -- 'nvim-telescope/telescope-ui-select.nvim',
-      { dir = "~/.config/nvim/lua/plugins/telescope-ui-select.nvim" },
-      -- { 'nvim-tree/nvim-web-devicons', enable = vim.g.have_nerd_font },
-      { dir = "~/.config/nvim/lua/plugins/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+      'nvim-telescope/telescope-ui-select.nvim',
+      -- { dir = "~/.config/nvim/lua/plugins/telescope-ui-select.nvim" },
+      { 'nvim-tree/nvim-web-devicons', enable = vim.g.have_nerd_font },
+      -- { dir = "~/.config/nvim/lua/plugins/nvim-web-devicons", enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that

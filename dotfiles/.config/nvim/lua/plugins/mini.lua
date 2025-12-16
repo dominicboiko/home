@@ -1,7 +1,8 @@
 return {
   { -- Collection of various small independent plugins/modules
-    -- { 'nvim-mini/mini.nvim', version = '*' },
-    dir = "~/.config/nvim/lua/plugins/mini.nvim",
+    'nvim-mini/mini.nvim',
+    version = '*',
+    -- dir = "~/.config/nvim/lua/plugins/mini.nvim",
     config = function()
       -- Better Around/Inside textobjects
       --

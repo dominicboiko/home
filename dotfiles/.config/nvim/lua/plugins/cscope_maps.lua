@@ -1,7 +1,7 @@
 return {
   {
-    -- "dhananjaylatkar/cscope_maps.nvim",
-    dir = "~/.config/nvim/lua/plugins/cscope_maps.nvim",
+    "dhananjaylatkar/cscope_maps.nvim",
+    -- dir = "~/.config/nvim/lua/plugins/cscope_maps.nvim",
     dependencies = {
       { "nvim-telescope/telescope.nvim" }, -- optional [for picker="telescope"]
       -- { "ibhagwan/fzf-lua" }, -- optional [for picker="fzf-lua"]
